@@ -14,12 +14,11 @@ const CLIENT_ID = credentials.clientId;
 const CLIENT_SECRET = credentials.clientSecret;
 const REDIRECT_URI = credentials.redirectUri;
 const AUTH_ENDPOINT = 'https://accounts.spotify.com/authorize';
-const RESPONSE_TYPE = 'token';
+const RESPONSE_TYPE = 'code';
 
 var logged = false;
 
-// const SCOPES = 'playlist-read-private%20user-read-private%20user-read-email';
-const SCOPES = 'app-remote-control';
+const SCOPES = 'playlist-read-private%20user-read-private%20user-read-email';
 
 const spotifyApi = new SpotifyWebApi({
 	redirectUri: REDIRECT_URI,
@@ -59,7 +58,7 @@ function App() {
 	}, []);
 
 	const authorize_url = () => {
-		return `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&scopes=${SCOPES}&response_type=${RESPONSE_TYPE}&state=a`;
+		return `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&scopes=playlist-read-private&response_type=${RESPONSE_TYPE}&state=a`;
 	};
 	function getUser() {
 		console.log('Get user:');
